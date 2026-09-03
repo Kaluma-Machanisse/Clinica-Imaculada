@@ -1,30 +1,43 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:clinica_imaculada/core/auth/password_hasher.dart';
+import 'package:clinica_imaculada/core/auth/permissions.dart';
+import 'package:clinica_imaculada/core/auth/user_role.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:clinica_imaculada/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('PasswordPolicy', () {
+    test('rejeita senha curta', () {
+      expect(PasswordPolicy.validate('Ab1'), isNotNull);
+    });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    test('rejeita senha sem números', () {
+      expect(PasswordPolicy.validate('apenasletras'), isNotNull);
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    test('aceita senha com letras e números e comprimento suficiente', () {
+      expect(PasswordPolicy.validate('clinica2025'), isNull);
+    });
+  });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  group('Permissions', () {
+    test('recepção não acede a relatórios', () {
+      expect(Permissions.can(UserRole.recepcao, AppSection.relatorios), isFalse);
+    });
+
+    test('médico acede a anamnese', () {
+      expect(Permissions.can(UserRole.medico, AppSection.anamnese), isTrue);
+    });
+
+    test('admin acede a tudo', () {
+      for (final s in AppSection.values) {
+        expect(Permissions.can(UserRole.admin, s), isTrue, reason: s.name);
+      }
+    });
+
+    test('farmacêutico só vê farmácia e caixa', () {
+      expect(
+        Permissions.sectionsFor(UserRole.farmaceutico),
+        {AppSection.farmacia, AppSection.caixa},
+      );
+    });
   });
 }

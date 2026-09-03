@@ -1,17 +1,32 @@
-# clinica_imaculada
+# Clínica Imaculada — Sistema de Gestão
 
-A new Flutter project.
+Aplicação **Windows desktop** (Flutter) para gestão de uma clínica: atendimento,
+farmácia e gestão financeira. Funciona **100% offline**; sincroniza uma cópia
+dos dados para a nuvem quando há internet, sem interromper o uso.
 
-## Getting Started
+## Documentação
 
-This project is a starting point for a Flutter application.
+Toda a documentação está em [`docs/`](docs/README.md) — arquitetura, base de
+dados, segurança, perfis e permissões, sincronização e módulos.
+O histórico de alterações está em [`docs/CHANGELOG.md`](docs/CHANGELOG.md).
 
-A few resources to get you started if this is your first Flutter project:
+## Desenvolvimento
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+Requisitos: Flutter 3.44+ (Dart 3.12+).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+flutter pub get
+dart run build_runner build          # gera o código do drift (*.g.dart)
+flutter test                         # testes
+flutter run -d windows               # executar (alvo principal)
+```
+
+> No Linux, o build desktop precisa também de `libsecret-1-dev` e
+> `libjsoncpp-dev` (dependências do `flutter_secure_storage`). No Windows não é
+> necessário.
+
+## Estado
+
+Passo 1 (Fundação) concluído: estrutura, base de dados cifrada, autenticação
+local por perfil, navegação e camada de sincronização vazia. Próximo: módulo de
+Pacientes.
