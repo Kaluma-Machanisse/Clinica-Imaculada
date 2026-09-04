@@ -27,6 +27,7 @@ flutter run -d windows               # executar (alvo principal)
 
 ## Estado
 
-Passo 1 (Fundação) concluído: estrutura, base de dados cifrada, autenticação
-local por perfil, navegação e camada de sincronização vazia. Próximo: módulo de
-Pacientes.
+- Passo 1 (Fundação) ✔ — estrutura, base de dados cifrada, autenticação local
+  por perfil, navegação, camada de sincronização vazia.
+- Passo 2 (Pacientes) ✔ — cadastro, pesquisa, ficha, edição, remoção lógica.
+- Próximo: Consultas + Anamnese.

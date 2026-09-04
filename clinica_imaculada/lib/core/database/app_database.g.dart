@@ -1426,18 +1426,1313 @@ class AuditLogsCompanion extends UpdateCompanion<AuditLog> {
   }
 }
 
+class $PatientsTable extends Patients with TableInfo<$PatientsTable, Patient> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PatientsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    clientDefault: () => const Uuid().v4(),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  static const VerificationMeta _isDeletedMeta = const VerificationMeta(
+    'isDeleted',
+  );
+  @override
+  late final GeneratedColumn<bool> isDeleted = GeneratedColumn<bool>(
+    'is_deleted',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_deleted" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
+  static const VerificationMeta _syncStateMeta = const VerificationMeta(
+    'syncState',
+  );
+  @override
+  late final GeneratedColumn<String> syncState = GeneratedColumn<String>(
+    'sync_state',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 16,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('pending'),
+  );
+  static const VerificationMeta _processNumberMeta = const VerificationMeta(
+    'processNumber',
+  );
+  @override
+  late final GeneratedColumn<int> processNumber = GeneratedColumn<int>(
+    'process_number',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fullNameMeta = const VerificationMeta(
+    'fullName',
+  );
+  @override
+  late final GeneratedColumn<String> fullName = GeneratedColumn<String>(
+    'full_name',
+    aliasedName,
+    false,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 160,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _dateOfBirthMeta = const VerificationMeta(
+    'dateOfBirth',
+  );
+  @override
+  late final GeneratedColumn<DateTime> dateOfBirth = GeneratedColumn<DateTime>(
+    'date_of_birth',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _sexMeta = const VerificationMeta('sex');
+  @override
+  late final GeneratedColumn<String> sex = GeneratedColumn<String>(
+    'sex',
+    aliasedName,
+    true,
+    additionalChecks: GeneratedColumn.checkTextLength(
+      minTextLength: 1,
+      maxTextLength: 10,
+    ),
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _idDocumentMeta = const VerificationMeta(
+    'idDocument',
+  );
+  @override
+  late final GeneratedColumn<String> idDocument = GeneratedColumn<String>(
+    'id_document',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _taxIdMeta = const VerificationMeta('taxId');
+  @override
+  late final GeneratedColumn<String> taxId = GeneratedColumn<String>(
+    'tax_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _phoneMeta = const VerificationMeta('phone');
+  @override
+  late final GeneratedColumn<String> phone = GeneratedColumn<String>(
+    'phone',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _phoneAltMeta = const VerificationMeta(
+    'phoneAlt',
+  );
+  @override
+  late final GeneratedColumn<String> phoneAlt = GeneratedColumn<String>(
+    'phone_alt',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _emailMeta = const VerificationMeta('email');
+  @override
+  late final GeneratedColumn<String> email = GeneratedColumn<String>(
+    'email',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _addressMeta = const VerificationMeta(
+    'address',
+  );
+  @override
+  late final GeneratedColumn<String> address = GeneratedColumn<String>(
+    'address',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _cityMeta = const VerificationMeta('city');
+  @override
+  late final GeneratedColumn<String> city = GeneratedColumn<String>(
+    'city',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _provinceMeta = const VerificationMeta(
+    'province',
+  );
+  @override
+  late final GeneratedColumn<String> province = GeneratedColumn<String>(
+    'province',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _nextOfKinNameMeta = const VerificationMeta(
+    'nextOfKinName',
+  );
+  @override
+  late final GeneratedColumn<String> nextOfKinName = GeneratedColumn<String>(
+    'next_of_kin_name',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _nextOfKinPhoneMeta = const VerificationMeta(
+    'nextOfKinPhone',
+  );
+  @override
+  late final GeneratedColumn<String> nextOfKinPhone = GeneratedColumn<String>(
+    'next_of_kin_phone',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _bloodTypeMeta = const VerificationMeta(
+    'bloodType',
+  );
+  @override
+  late final GeneratedColumn<String> bloodType = GeneratedColumn<String>(
+    'blood_type',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _allergiesMeta = const VerificationMeta(
+    'allergies',
+  );
+  @override
+  late final GeneratedColumn<String> allergies = GeneratedColumn<String>(
+    'allergies',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _chronicConditionsMeta = const VerificationMeta(
+    'chronicConditions',
+  );
+  @override
+  late final GeneratedColumn<String> chronicConditions =
+      GeneratedColumn<String>(
+        'chronic_conditions',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    createdAt,
+    updatedAt,
+    isDeleted,
+    syncState,
+    processNumber,
+    fullName,
+    dateOfBirth,
+    sex,
+    idDocument,
+    taxId,
+    phone,
+    phoneAlt,
+    email,
+    address,
+    city,
+    province,
+    nextOfKinName,
+    nextOfKinPhone,
+    bloodType,
+    allergies,
+    chronicConditions,
+    notes,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'patients';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Patient> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    if (data.containsKey('is_deleted')) {
+      context.handle(
+        _isDeletedMeta,
+        isDeleted.isAcceptableOrUnknown(data['is_deleted']!, _isDeletedMeta),
+      );
+    }
+    if (data.containsKey('sync_state')) {
+      context.handle(
+        _syncStateMeta,
+        syncState.isAcceptableOrUnknown(data['sync_state']!, _syncStateMeta),
+      );
+    }
+    if (data.containsKey('process_number')) {
+      context.handle(
+        _processNumberMeta,
+        processNumber.isAcceptableOrUnknown(
+          data['process_number']!,
+          _processNumberMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_processNumberMeta);
+    }
+    if (data.containsKey('full_name')) {
+      context.handle(
+        _fullNameMeta,
+        fullName.isAcceptableOrUnknown(data['full_name']!, _fullNameMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_fullNameMeta);
+    }
+    if (data.containsKey('date_of_birth')) {
+      context.handle(
+        _dateOfBirthMeta,
+        dateOfBirth.isAcceptableOrUnknown(
+          data['date_of_birth']!,
+          _dateOfBirthMeta,
+        ),
+      );
+    }
+    if (data.containsKey('sex')) {
+      context.handle(
+        _sexMeta,
+        sex.isAcceptableOrUnknown(data['sex']!, _sexMeta),
+      );
+    }
+    if (data.containsKey('id_document')) {
+      context.handle(
+        _idDocumentMeta,
+        idDocument.isAcceptableOrUnknown(data['id_document']!, _idDocumentMeta),
+      );
+    }
+    if (data.containsKey('tax_id')) {
+      context.handle(
+        _taxIdMeta,
+        taxId.isAcceptableOrUnknown(data['tax_id']!, _taxIdMeta),
+      );
+    }
+    if (data.containsKey('phone')) {
+      context.handle(
+        _phoneMeta,
+        phone.isAcceptableOrUnknown(data['phone']!, _phoneMeta),
+      );
+    }
+    if (data.containsKey('phone_alt')) {
+      context.handle(
+        _phoneAltMeta,
+        phoneAlt.isAcceptableOrUnknown(data['phone_alt']!, _phoneAltMeta),
+      );
+    }
+    if (data.containsKey('email')) {
+      context.handle(
+        _emailMeta,
+        email.isAcceptableOrUnknown(data['email']!, _emailMeta),
+      );
+    }
+    if (data.containsKey('address')) {
+      context.handle(
+        _addressMeta,
+        address.isAcceptableOrUnknown(data['address']!, _addressMeta),
+      );
+    }
+    if (data.containsKey('city')) {
+      context.handle(
+        _cityMeta,
+        city.isAcceptableOrUnknown(data['city']!, _cityMeta),
+      );
+    }
+    if (data.containsKey('province')) {
+      context.handle(
+        _provinceMeta,
+        province.isAcceptableOrUnknown(data['province']!, _provinceMeta),
+      );
+    }
+    if (data.containsKey('next_of_kin_name')) {
+      context.handle(
+        _nextOfKinNameMeta,
+        nextOfKinName.isAcceptableOrUnknown(
+          data['next_of_kin_name']!,
+          _nextOfKinNameMeta,
+        ),
+      );
+    }
+    if (data.containsKey('next_of_kin_phone')) {
+      context.handle(
+        _nextOfKinPhoneMeta,
+        nextOfKinPhone.isAcceptableOrUnknown(
+          data['next_of_kin_phone']!,
+          _nextOfKinPhoneMeta,
+        ),
+      );
+    }
+    if (data.containsKey('blood_type')) {
+      context.handle(
+        _bloodTypeMeta,
+        bloodType.isAcceptableOrUnknown(data['blood_type']!, _bloodTypeMeta),
+      );
+    }
+    if (data.containsKey('allergies')) {
+      context.handle(
+        _allergiesMeta,
+        allergies.isAcceptableOrUnknown(data['allergies']!, _allergiesMeta),
+      );
+    }
+    if (data.containsKey('chronic_conditions')) {
+      context.handle(
+        _chronicConditionsMeta,
+        chronicConditions.isAcceptableOrUnknown(
+          data['chronic_conditions']!,
+          _chronicConditionsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  List<Set<GeneratedColumn>> get uniqueKeys => [
+    {processNumber},
+  ];
+  @override
+  Patient map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Patient(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      isDeleted: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_deleted'],
+      )!,
+      syncState: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sync_state'],
+      )!,
+      processNumber: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}process_number'],
+      )!,
+      fullName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}full_name'],
+      )!,
+      dateOfBirth: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}date_of_birth'],
+      ),
+      sex: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sex'],
+      ),
+      idDocument: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id_document'],
+      ),
+      taxId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}tax_id'],
+      ),
+      phone: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone'],
+      ),
+      phoneAlt: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}phone_alt'],
+      ),
+      email: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}email'],
+      ),
+      address: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}address'],
+      ),
+      city: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}city'],
+      ),
+      province: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}province'],
+      ),
+      nextOfKinName: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}next_of_kin_name'],
+      ),
+      nextOfKinPhone: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}next_of_kin_phone'],
+      ),
+      bloodType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}blood_type'],
+      ),
+      allergies: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}allergies'],
+      ),
+      chronicConditions: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}chronic_conditions'],
+      ),
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      ),
+    );
+  }
+
+  @override
+  $PatientsTable createAlias(String alias) {
+    return $PatientsTable(attachedDatabase, alias);
+  }
+}
+
+class Patient extends DataClass implements Insertable<Patient> {
+  final String id;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final bool isDeleted;
+  final String syncState;
+
+  /// Nº de processo, sequencial e legível (ex.: 42 → "0042"). Único.
+  /// Gerado automaticamente ao criar o paciente.
+  final int processNumber;
+  final String fullName;
+  final DateTime? dateOfBirth;
+
+  /// Guardado como `PatientSex.name`.
+  final String? sex;
+
+  /// Documento de identificação (BI, passaporte, …).
+  final String? idDocument;
+
+  /// NIF / número de contribuinte (para recibos).
+  final String? taxId;
+  final String? phone;
+  final String? phoneAlt;
+  final String? email;
+  final String? address;
+  final String? city;
+  final String? province;
+
+  /// Contacto de emergência.
+  final String? nextOfKinName;
+  final String? nextOfKinPhone;
+
+  /// Dados clínicos de referência rápida.
+  final String? bloodType;
+  final String? allergies;
+  final String? chronicConditions;
+  final String? notes;
+  const Patient({
+    required this.id,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.isDeleted,
+    required this.syncState,
+    required this.processNumber,
+    required this.fullName,
+    this.dateOfBirth,
+    this.sex,
+    this.idDocument,
+    this.taxId,
+    this.phone,
+    this.phoneAlt,
+    this.email,
+    this.address,
+    this.city,
+    this.province,
+    this.nextOfKinName,
+    this.nextOfKinPhone,
+    this.bloodType,
+    this.allergies,
+    this.chronicConditions,
+    this.notes,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['is_deleted'] = Variable<bool>(isDeleted);
+    map['sync_state'] = Variable<String>(syncState);
+    map['process_number'] = Variable<int>(processNumber);
+    map['full_name'] = Variable<String>(fullName);
+    if (!nullToAbsent || dateOfBirth != null) {
+      map['date_of_birth'] = Variable<DateTime>(dateOfBirth);
+    }
+    if (!nullToAbsent || sex != null) {
+      map['sex'] = Variable<String>(sex);
+    }
+    if (!nullToAbsent || idDocument != null) {
+      map['id_document'] = Variable<String>(idDocument);
+    }
+    if (!nullToAbsent || taxId != null) {
+      map['tax_id'] = Variable<String>(taxId);
+    }
+    if (!nullToAbsent || phone != null) {
+      map['phone'] = Variable<String>(phone);
+    }
+    if (!nullToAbsent || phoneAlt != null) {
+      map['phone_alt'] = Variable<String>(phoneAlt);
+    }
+    if (!nullToAbsent || email != null) {
+      map['email'] = Variable<String>(email);
+    }
+    if (!nullToAbsent || address != null) {
+      map['address'] = Variable<String>(address);
+    }
+    if (!nullToAbsent || city != null) {
+      map['city'] = Variable<String>(city);
+    }
+    if (!nullToAbsent || province != null) {
+      map['province'] = Variable<String>(province);
+    }
+    if (!nullToAbsent || nextOfKinName != null) {
+      map['next_of_kin_name'] = Variable<String>(nextOfKinName);
+    }
+    if (!nullToAbsent || nextOfKinPhone != null) {
+      map['next_of_kin_phone'] = Variable<String>(nextOfKinPhone);
+    }
+    if (!nullToAbsent || bloodType != null) {
+      map['blood_type'] = Variable<String>(bloodType);
+    }
+    if (!nullToAbsent || allergies != null) {
+      map['allergies'] = Variable<String>(allergies);
+    }
+    if (!nullToAbsent || chronicConditions != null) {
+      map['chronic_conditions'] = Variable<String>(chronicConditions);
+    }
+    if (!nullToAbsent || notes != null) {
+      map['notes'] = Variable<String>(notes);
+    }
+    return map;
+  }
+
+  PatientsCompanion toCompanion(bool nullToAbsent) {
+    return PatientsCompanion(
+      id: Value(id),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      isDeleted: Value(isDeleted),
+      syncState: Value(syncState),
+      processNumber: Value(processNumber),
+      fullName: Value(fullName),
+      dateOfBirth: dateOfBirth == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dateOfBirth),
+      sex: sex == null && nullToAbsent ? const Value.absent() : Value(sex),
+      idDocument: idDocument == null && nullToAbsent
+          ? const Value.absent()
+          : Value(idDocument),
+      taxId: taxId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(taxId),
+      phone: phone == null && nullToAbsent
+          ? const Value.absent()
+          : Value(phone),
+      phoneAlt: phoneAlt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(phoneAlt),
+      email: email == null && nullToAbsent
+          ? const Value.absent()
+          : Value(email),
+      address: address == null && nullToAbsent
+          ? const Value.absent()
+          : Value(address),
+      city: city == null && nullToAbsent ? const Value.absent() : Value(city),
+      province: province == null && nullToAbsent
+          ? const Value.absent()
+          : Value(province),
+      nextOfKinName: nextOfKinName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(nextOfKinName),
+      nextOfKinPhone: nextOfKinPhone == null && nullToAbsent
+          ? const Value.absent()
+          : Value(nextOfKinPhone),
+      bloodType: bloodType == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bloodType),
+      allergies: allergies == null && nullToAbsent
+          ? const Value.absent()
+          : Value(allergies),
+      chronicConditions: chronicConditions == null && nullToAbsent
+          ? const Value.absent()
+          : Value(chronicConditions),
+      notes: notes == null && nullToAbsent
+          ? const Value.absent()
+          : Value(notes),
+    );
+  }
+
+  factory Patient.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Patient(
+      id: serializer.fromJson<String>(json['id']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      isDeleted: serializer.fromJson<bool>(json['isDeleted']),
+      syncState: serializer.fromJson<String>(json['syncState']),
+      processNumber: serializer.fromJson<int>(json['processNumber']),
+      fullName: serializer.fromJson<String>(json['fullName']),
+      dateOfBirth: serializer.fromJson<DateTime?>(json['dateOfBirth']),
+      sex: serializer.fromJson<String?>(json['sex']),
+      idDocument: serializer.fromJson<String?>(json['idDocument']),
+      taxId: serializer.fromJson<String?>(json['taxId']),
+      phone: serializer.fromJson<String?>(json['phone']),
+      phoneAlt: serializer.fromJson<String?>(json['phoneAlt']),
+      email: serializer.fromJson<String?>(json['email']),
+      address: serializer.fromJson<String?>(json['address']),
+      city: serializer.fromJson<String?>(json['city']),
+      province: serializer.fromJson<String?>(json['province']),
+      nextOfKinName: serializer.fromJson<String?>(json['nextOfKinName']),
+      nextOfKinPhone: serializer.fromJson<String?>(json['nextOfKinPhone']),
+      bloodType: serializer.fromJson<String?>(json['bloodType']),
+      allergies: serializer.fromJson<String?>(json['allergies']),
+      chronicConditions: serializer.fromJson<String?>(
+        json['chronicConditions'],
+      ),
+      notes: serializer.fromJson<String?>(json['notes']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'isDeleted': serializer.toJson<bool>(isDeleted),
+      'syncState': serializer.toJson<String>(syncState),
+      'processNumber': serializer.toJson<int>(processNumber),
+      'fullName': serializer.toJson<String>(fullName),
+      'dateOfBirth': serializer.toJson<DateTime?>(dateOfBirth),
+      'sex': serializer.toJson<String?>(sex),
+      'idDocument': serializer.toJson<String?>(idDocument),
+      'taxId': serializer.toJson<String?>(taxId),
+      'phone': serializer.toJson<String?>(phone),
+      'phoneAlt': serializer.toJson<String?>(phoneAlt),
+      'email': serializer.toJson<String?>(email),
+      'address': serializer.toJson<String?>(address),
+      'city': serializer.toJson<String?>(city),
+      'province': serializer.toJson<String?>(province),
+      'nextOfKinName': serializer.toJson<String?>(nextOfKinName),
+      'nextOfKinPhone': serializer.toJson<String?>(nextOfKinPhone),
+      'bloodType': serializer.toJson<String?>(bloodType),
+      'allergies': serializer.toJson<String?>(allergies),
+      'chronicConditions': serializer.toJson<String?>(chronicConditions),
+      'notes': serializer.toJson<String?>(notes),
+    };
+  }
+
+  Patient copyWith({
+    String? id,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    bool? isDeleted,
+    String? syncState,
+    int? processNumber,
+    String? fullName,
+    Value<DateTime?> dateOfBirth = const Value.absent(),
+    Value<String?> sex = const Value.absent(),
+    Value<String?> idDocument = const Value.absent(),
+    Value<String?> taxId = const Value.absent(),
+    Value<String?> phone = const Value.absent(),
+    Value<String?> phoneAlt = const Value.absent(),
+    Value<String?> email = const Value.absent(),
+    Value<String?> address = const Value.absent(),
+    Value<String?> city = const Value.absent(),
+    Value<String?> province = const Value.absent(),
+    Value<String?> nextOfKinName = const Value.absent(),
+    Value<String?> nextOfKinPhone = const Value.absent(),
+    Value<String?> bloodType = const Value.absent(),
+    Value<String?> allergies = const Value.absent(),
+    Value<String?> chronicConditions = const Value.absent(),
+    Value<String?> notes = const Value.absent(),
+  }) => Patient(
+    id: id ?? this.id,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    isDeleted: isDeleted ?? this.isDeleted,
+    syncState: syncState ?? this.syncState,
+    processNumber: processNumber ?? this.processNumber,
+    fullName: fullName ?? this.fullName,
+    dateOfBirth: dateOfBirth.present ? dateOfBirth.value : this.dateOfBirth,
+    sex: sex.present ? sex.value : this.sex,
+    idDocument: idDocument.present ? idDocument.value : this.idDocument,
+    taxId: taxId.present ? taxId.value : this.taxId,
+    phone: phone.present ? phone.value : this.phone,
+    phoneAlt: phoneAlt.present ? phoneAlt.value : this.phoneAlt,
+    email: email.present ? email.value : this.email,
+    address: address.present ? address.value : this.address,
+    city: city.present ? city.value : this.city,
+    province: province.present ? province.value : this.province,
+    nextOfKinName: nextOfKinName.present
+        ? nextOfKinName.value
+        : this.nextOfKinName,
+    nextOfKinPhone: nextOfKinPhone.present
+        ? nextOfKinPhone.value
+        : this.nextOfKinPhone,
+    bloodType: bloodType.present ? bloodType.value : this.bloodType,
+    allergies: allergies.present ? allergies.value : this.allergies,
+    chronicConditions: chronicConditions.present
+        ? chronicConditions.value
+        : this.chronicConditions,
+    notes: notes.present ? notes.value : this.notes,
+  );
+  Patient copyWithCompanion(PatientsCompanion data) {
+    return Patient(
+      id: data.id.present ? data.id.value : this.id,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      isDeleted: data.isDeleted.present ? data.isDeleted.value : this.isDeleted,
+      syncState: data.syncState.present ? data.syncState.value : this.syncState,
+      processNumber: data.processNumber.present
+          ? data.processNumber.value
+          : this.processNumber,
+      fullName: data.fullName.present ? data.fullName.value : this.fullName,
+      dateOfBirth: data.dateOfBirth.present
+          ? data.dateOfBirth.value
+          : this.dateOfBirth,
+      sex: data.sex.present ? data.sex.value : this.sex,
+      idDocument: data.idDocument.present
+          ? data.idDocument.value
+          : this.idDocument,
+      taxId: data.taxId.present ? data.taxId.value : this.taxId,
+      phone: data.phone.present ? data.phone.value : this.phone,
+      phoneAlt: data.phoneAlt.present ? data.phoneAlt.value : this.phoneAlt,
+      email: data.email.present ? data.email.value : this.email,
+      address: data.address.present ? data.address.value : this.address,
+      city: data.city.present ? data.city.value : this.city,
+      province: data.province.present ? data.province.value : this.province,
+      nextOfKinName: data.nextOfKinName.present
+          ? data.nextOfKinName.value
+          : this.nextOfKinName,
+      nextOfKinPhone: data.nextOfKinPhone.present
+          ? data.nextOfKinPhone.value
+          : this.nextOfKinPhone,
+      bloodType: data.bloodType.present ? data.bloodType.value : this.bloodType,
+      allergies: data.allergies.present ? data.allergies.value : this.allergies,
+      chronicConditions: data.chronicConditions.present
+          ? data.chronicConditions.value
+          : this.chronicConditions,
+      notes: data.notes.present ? data.notes.value : this.notes,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Patient(')
+          ..write('id: $id, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('isDeleted: $isDeleted, ')
+          ..write('syncState: $syncState, ')
+          ..write('processNumber: $processNumber, ')
+          ..write('fullName: $fullName, ')
+          ..write('dateOfBirth: $dateOfBirth, ')
+          ..write('sex: $sex, ')
+          ..write('idDocument: $idDocument, ')
+          ..write('taxId: $taxId, ')
+          ..write('phone: $phone, ')
+          ..write('phoneAlt: $phoneAlt, ')
+          ..write('email: $email, ')
+          ..write('address: $address, ')
+          ..write('city: $city, ')
+          ..write('province: $province, ')
+          ..write('nextOfKinName: $nextOfKinName, ')
+          ..write('nextOfKinPhone: $nextOfKinPhone, ')
+          ..write('bloodType: $bloodType, ')
+          ..write('allergies: $allergies, ')
+          ..write('chronicConditions: $chronicConditions, ')
+          ..write('notes: $notes')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hashAll([
+    id,
+    createdAt,
+    updatedAt,
+    isDeleted,
+    syncState,
+    processNumber,
+    fullName,
+    dateOfBirth,
+    sex,
+    idDocument,
+    taxId,
+    phone,
+    phoneAlt,
+    email,
+    address,
+    city,
+    province,
+    nextOfKinName,
+    nextOfKinPhone,
+    bloodType,
+    allergies,
+    chronicConditions,
+    notes,
+  ]);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Patient &&
+          other.id == this.id &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.isDeleted == this.isDeleted &&
+          other.syncState == this.syncState &&
+          other.processNumber == this.processNumber &&
+          other.fullName == this.fullName &&
+          other.dateOfBirth == this.dateOfBirth &&
+          other.sex == this.sex &&
+          other.idDocument == this.idDocument &&
+          other.taxId == this.taxId &&
+          other.phone == this.phone &&
+          other.phoneAlt == this.phoneAlt &&
+          other.email == this.email &&
+          other.address == this.address &&
+          other.city == this.city &&
+          other.province == this.province &&
+          other.nextOfKinName == this.nextOfKinName &&
+          other.nextOfKinPhone == this.nextOfKinPhone &&
+          other.bloodType == this.bloodType &&
+          other.allergies == this.allergies &&
+          other.chronicConditions == this.chronicConditions &&
+          other.notes == this.notes);
+}
+
+class PatientsCompanion extends UpdateCompanion<Patient> {
+  final Value<String> id;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<bool> isDeleted;
+  final Value<String> syncState;
+  final Value<int> processNumber;
+  final Value<String> fullName;
+  final Value<DateTime?> dateOfBirth;
+  final Value<String?> sex;
+  final Value<String?> idDocument;
+  final Value<String?> taxId;
+  final Value<String?> phone;
+  final Value<String?> phoneAlt;
+  final Value<String?> email;
+  final Value<String?> address;
+  final Value<String?> city;
+  final Value<String?> province;
+  final Value<String?> nextOfKinName;
+  final Value<String?> nextOfKinPhone;
+  final Value<String?> bloodType;
+  final Value<String?> allergies;
+  final Value<String?> chronicConditions;
+  final Value<String?> notes;
+  final Value<int> rowid;
+  const PatientsCompanion({
+    this.id = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.isDeleted = const Value.absent(),
+    this.syncState = const Value.absent(),
+    this.processNumber = const Value.absent(),
+    this.fullName = const Value.absent(),
+    this.dateOfBirth = const Value.absent(),
+    this.sex = const Value.absent(),
+    this.idDocument = const Value.absent(),
+    this.taxId = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.phoneAlt = const Value.absent(),
+    this.email = const Value.absent(),
+    this.address = const Value.absent(),
+    this.city = const Value.absent(),
+    this.province = const Value.absent(),
+    this.nextOfKinName = const Value.absent(),
+    this.nextOfKinPhone = const Value.absent(),
+    this.bloodType = const Value.absent(),
+    this.allergies = const Value.absent(),
+    this.chronicConditions = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PatientsCompanion.insert({
+    this.id = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.isDeleted = const Value.absent(),
+    this.syncState = const Value.absent(),
+    required int processNumber,
+    required String fullName,
+    this.dateOfBirth = const Value.absent(),
+    this.sex = const Value.absent(),
+    this.idDocument = const Value.absent(),
+    this.taxId = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.phoneAlt = const Value.absent(),
+    this.email = const Value.absent(),
+    this.address = const Value.absent(),
+    this.city = const Value.absent(),
+    this.province = const Value.absent(),
+    this.nextOfKinName = const Value.absent(),
+    this.nextOfKinPhone = const Value.absent(),
+    this.bloodType = const Value.absent(),
+    this.allergies = const Value.absent(),
+    this.chronicConditions = const Value.absent(),
+    this.notes = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : processNumber = Value(processNumber),
+       fullName = Value(fullName);
+  static Insertable<Patient> custom({
+    Expression<String>? id,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<bool>? isDeleted,
+    Expression<String>? syncState,
+    Expression<int>? processNumber,
+    Expression<String>? fullName,
+    Expression<DateTime>? dateOfBirth,
+    Expression<String>? sex,
+    Expression<String>? idDocument,
+    Expression<String>? taxId,
+    Expression<String>? phone,
+    Expression<String>? phoneAlt,
+    Expression<String>? email,
+    Expression<String>? address,
+    Expression<String>? city,
+    Expression<String>? province,
+    Expression<String>? nextOfKinName,
+    Expression<String>? nextOfKinPhone,
+    Expression<String>? bloodType,
+    Expression<String>? allergies,
+    Expression<String>? chronicConditions,
+    Expression<String>? notes,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (isDeleted != null) 'is_deleted': isDeleted,
+      if (syncState != null) 'sync_state': syncState,
+      if (processNumber != null) 'process_number': processNumber,
+      if (fullName != null) 'full_name': fullName,
+      if (dateOfBirth != null) 'date_of_birth': dateOfBirth,
+      if (sex != null) 'sex': sex,
+      if (idDocument != null) 'id_document': idDocument,
+      if (taxId != null) 'tax_id': taxId,
+      if (phone != null) 'phone': phone,
+      if (phoneAlt != null) 'phone_alt': phoneAlt,
+      if (email != null) 'email': email,
+      if (address != null) 'address': address,
+      if (city != null) 'city': city,
+      if (province != null) 'province': province,
+      if (nextOfKinName != null) 'next_of_kin_name': nextOfKinName,
+      if (nextOfKinPhone != null) 'next_of_kin_phone': nextOfKinPhone,
+      if (bloodType != null) 'blood_type': bloodType,
+      if (allergies != null) 'allergies': allergies,
+      if (chronicConditions != null) 'chronic_conditions': chronicConditions,
+      if (notes != null) 'notes': notes,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PatientsCompanion copyWith({
+    Value<String>? id,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<bool>? isDeleted,
+    Value<String>? syncState,
+    Value<int>? processNumber,
+    Value<String>? fullName,
+    Value<DateTime?>? dateOfBirth,
+    Value<String?>? sex,
+    Value<String?>? idDocument,
+    Value<String?>? taxId,
+    Value<String?>? phone,
+    Value<String?>? phoneAlt,
+    Value<String?>? email,
+    Value<String?>? address,
+    Value<String?>? city,
+    Value<String?>? province,
+    Value<String?>? nextOfKinName,
+    Value<String?>? nextOfKinPhone,
+    Value<String?>? bloodType,
+    Value<String?>? allergies,
+    Value<String?>? chronicConditions,
+    Value<String?>? notes,
+    Value<int>? rowid,
+  }) {
+    return PatientsCompanion(
+      id: id ?? this.id,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      isDeleted: isDeleted ?? this.isDeleted,
+      syncState: syncState ?? this.syncState,
+      processNumber: processNumber ?? this.processNumber,
+      fullName: fullName ?? this.fullName,
+      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      sex: sex ?? this.sex,
+      idDocument: idDocument ?? this.idDocument,
+      taxId: taxId ?? this.taxId,
+      phone: phone ?? this.phone,
+      phoneAlt: phoneAlt ?? this.phoneAlt,
+      email: email ?? this.email,
+      address: address ?? this.address,
+      city: city ?? this.city,
+      province: province ?? this.province,
+      nextOfKinName: nextOfKinName ?? this.nextOfKinName,
+      nextOfKinPhone: nextOfKinPhone ?? this.nextOfKinPhone,
+      bloodType: bloodType ?? this.bloodType,
+      allergies: allergies ?? this.allergies,
+      chronicConditions: chronicConditions ?? this.chronicConditions,
+      notes: notes ?? this.notes,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (isDeleted.present) {
+      map['is_deleted'] = Variable<bool>(isDeleted.value);
+    }
+    if (syncState.present) {
+      map['sync_state'] = Variable<String>(syncState.value);
+    }
+    if (processNumber.present) {
+      map['process_number'] = Variable<int>(processNumber.value);
+    }
+    if (fullName.present) {
+      map['full_name'] = Variable<String>(fullName.value);
+    }
+    if (dateOfBirth.present) {
+      map['date_of_birth'] = Variable<DateTime>(dateOfBirth.value);
+    }
+    if (sex.present) {
+      map['sex'] = Variable<String>(sex.value);
+    }
+    if (idDocument.present) {
+      map['id_document'] = Variable<String>(idDocument.value);
+    }
+    if (taxId.present) {
+      map['tax_id'] = Variable<String>(taxId.value);
+    }
+    if (phone.present) {
+      map['phone'] = Variable<String>(phone.value);
+    }
+    if (phoneAlt.present) {
+      map['phone_alt'] = Variable<String>(phoneAlt.value);
+    }
+    if (email.present) {
+      map['email'] = Variable<String>(email.value);
+    }
+    if (address.present) {
+      map['address'] = Variable<String>(address.value);
+    }
+    if (city.present) {
+      map['city'] = Variable<String>(city.value);
+    }
+    if (province.present) {
+      map['province'] = Variable<String>(province.value);
+    }
+    if (nextOfKinName.present) {
+      map['next_of_kin_name'] = Variable<String>(nextOfKinName.value);
+    }
+    if (nextOfKinPhone.present) {
+      map['next_of_kin_phone'] = Variable<String>(nextOfKinPhone.value);
+    }
+    if (bloodType.present) {
+      map['blood_type'] = Variable<String>(bloodType.value);
+    }
+    if (allergies.present) {
+      map['allergies'] = Variable<String>(allergies.value);
+    }
+    if (chronicConditions.present) {
+      map['chronic_conditions'] = Variable<String>(chronicConditions.value);
+    }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PatientsCompanion(')
+          ..write('id: $id, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('isDeleted: $isDeleted, ')
+          ..write('syncState: $syncState, ')
+          ..write('processNumber: $processNumber, ')
+          ..write('fullName: $fullName, ')
+          ..write('dateOfBirth: $dateOfBirth, ')
+          ..write('sex: $sex, ')
+          ..write('idDocument: $idDocument, ')
+          ..write('taxId: $taxId, ')
+          ..write('phone: $phone, ')
+          ..write('phoneAlt: $phoneAlt, ')
+          ..write('email: $email, ')
+          ..write('address: $address, ')
+          ..write('city: $city, ')
+          ..write('province: $province, ')
+          ..write('nextOfKinName: $nextOfKinName, ')
+          ..write('nextOfKinPhone: $nextOfKinPhone, ')
+          ..write('bloodType: $bloodType, ')
+          ..write('allergies: $allergies, ')
+          ..write('chronicConditions: $chronicConditions, ')
+          ..write('notes: $notes, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
   late final $UsersTable users = $UsersTable(this);
   late final $AuditLogsTable auditLogs = $AuditLogsTable(this);
+  late final $PatientsTable patients = $PatientsTable(this);
   late final UsersDao usersDao = UsersDao(this as AppDatabase);
   late final AuditDao auditDao = AuditDao(this as AppDatabase);
+  late final PatientsDao patientsDao = PatientsDao(this as AppDatabase);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [users, auditLogs];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [
+    users,
+    auditLogs,
+    patients,
+  ];
 }
 
 typedef $$UsersTableCreateCompanionBuilder =
@@ -2100,6 +3395,563 @@ typedef $$AuditLogsTableProcessedTableManager =
       AuditLog,
       PrefetchHooks Function()
     >;
+typedef $$PatientsTableCreateCompanionBuilder =
+    PatientsCompanion Function({
+      Value<String> id,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<bool> isDeleted,
+      Value<String> syncState,
+      required int processNumber,
+      required String fullName,
+      Value<DateTime?> dateOfBirth,
+      Value<String?> sex,
+      Value<String?> idDocument,
+      Value<String?> taxId,
+      Value<String?> phone,
+      Value<String?> phoneAlt,
+      Value<String?> email,
+      Value<String?> address,
+      Value<String?> city,
+      Value<String?> province,
+      Value<String?> nextOfKinName,
+      Value<String?> nextOfKinPhone,
+      Value<String?> bloodType,
+      Value<String?> allergies,
+      Value<String?> chronicConditions,
+      Value<String?> notes,
+      Value<int> rowid,
+    });
+typedef $$PatientsTableUpdateCompanionBuilder =
+    PatientsCompanion Function({
+      Value<String> id,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<bool> isDeleted,
+      Value<String> syncState,
+      Value<int> processNumber,
+      Value<String> fullName,
+      Value<DateTime?> dateOfBirth,
+      Value<String?> sex,
+      Value<String?> idDocument,
+      Value<String?> taxId,
+      Value<String?> phone,
+      Value<String?> phoneAlt,
+      Value<String?> email,
+      Value<String?> address,
+      Value<String?> city,
+      Value<String?> province,
+      Value<String?> nextOfKinName,
+      Value<String?> nextOfKinPhone,
+      Value<String?> bloodType,
+      Value<String?> allergies,
+      Value<String?> chronicConditions,
+      Value<String?> notes,
+      Value<int> rowid,
+    });
+
+class $$PatientsTableFilterComposer
+    extends Composer<_$AppDatabase, $PatientsTable> {
+  $$PatientsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isDeleted => $composableBuilder(
+    column: $table.isDeleted,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get syncState => $composableBuilder(
+    column: $table.syncState,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get processNumber => $composableBuilder(
+    column: $table.processNumber,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fullName => $composableBuilder(
+    column: $table.fullName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get dateOfBirth => $composableBuilder(
+    column: $table.dateOfBirth,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sex => $composableBuilder(
+    column: $table.sex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get idDocument => $composableBuilder(
+    column: $table.idDocument,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get taxId => $composableBuilder(
+    column: $table.taxId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get phoneAlt => $composableBuilder(
+    column: $table.phoneAlt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get city => $composableBuilder(
+    column: $table.city,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get province => $composableBuilder(
+    column: $table.province,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get nextOfKinName => $composableBuilder(
+    column: $table.nextOfKinName,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get nextOfKinPhone => $composableBuilder(
+    column: $table.nextOfKinPhone,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get bloodType => $composableBuilder(
+    column: $table.bloodType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get allergies => $composableBuilder(
+    column: $table.allergies,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get chronicConditions => $composableBuilder(
+    column: $table.chronicConditions,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PatientsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PatientsTable> {
+  $$PatientsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isDeleted => $composableBuilder(
+    column: $table.isDeleted,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get syncState => $composableBuilder(
+    column: $table.syncState,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get processNumber => $composableBuilder(
+    column: $table.processNumber,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fullName => $composableBuilder(
+    column: $table.fullName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get dateOfBirth => $composableBuilder(
+    column: $table.dateOfBirth,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sex => $composableBuilder(
+    column: $table.sex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get idDocument => $composableBuilder(
+    column: $table.idDocument,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get taxId => $composableBuilder(
+    column: $table.taxId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phone => $composableBuilder(
+    column: $table.phone,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get phoneAlt => $composableBuilder(
+    column: $table.phoneAlt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get email => $composableBuilder(
+    column: $table.email,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get address => $composableBuilder(
+    column: $table.address,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get city => $composableBuilder(
+    column: $table.city,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get province => $composableBuilder(
+    column: $table.province,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get nextOfKinName => $composableBuilder(
+    column: $table.nextOfKinName,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get nextOfKinPhone => $composableBuilder(
+    column: $table.nextOfKinPhone,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get bloodType => $composableBuilder(
+    column: $table.bloodType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get allergies => $composableBuilder(
+    column: $table.allergies,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get chronicConditions => $composableBuilder(
+    column: $table.chronicConditions,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PatientsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PatientsTable> {
+  $$PatientsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<bool> get isDeleted =>
+      $composableBuilder(column: $table.isDeleted, builder: (column) => column);
+
+  GeneratedColumn<String> get syncState =>
+      $composableBuilder(column: $table.syncState, builder: (column) => column);
+
+  GeneratedColumn<int> get processNumber => $composableBuilder(
+    column: $table.processNumber,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get fullName =>
+      $composableBuilder(column: $table.fullName, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get dateOfBirth => $composableBuilder(
+    column: $table.dateOfBirth,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get sex =>
+      $composableBuilder(column: $table.sex, builder: (column) => column);
+
+  GeneratedColumn<String> get idDocument => $composableBuilder(
+    column: $table.idDocument,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get taxId =>
+      $composableBuilder(column: $table.taxId, builder: (column) => column);
+
+  GeneratedColumn<String> get phone =>
+      $composableBuilder(column: $table.phone, builder: (column) => column);
+
+  GeneratedColumn<String> get phoneAlt =>
+      $composableBuilder(column: $table.phoneAlt, builder: (column) => column);
+
+  GeneratedColumn<String> get email =>
+      $composableBuilder(column: $table.email, builder: (column) => column);
+
+  GeneratedColumn<String> get address =>
+      $composableBuilder(column: $table.address, builder: (column) => column);
+
+  GeneratedColumn<String> get city =>
+      $composableBuilder(column: $table.city, builder: (column) => column);
+
+  GeneratedColumn<String> get province =>
+      $composableBuilder(column: $table.province, builder: (column) => column);
+
+  GeneratedColumn<String> get nextOfKinName => $composableBuilder(
+    column: $table.nextOfKinName,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get nextOfKinPhone => $composableBuilder(
+    column: $table.nextOfKinPhone,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get bloodType =>
+      $composableBuilder(column: $table.bloodType, builder: (column) => column);
+
+  GeneratedColumn<String> get allergies =>
+      $composableBuilder(column: $table.allergies, builder: (column) => column);
+
+  GeneratedColumn<String> get chronicConditions => $composableBuilder(
+    column: $table.chronicConditions,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
+}
+
+class $$PatientsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PatientsTable,
+          Patient,
+          $$PatientsTableFilterComposer,
+          $$PatientsTableOrderingComposer,
+          $$PatientsTableAnnotationComposer,
+          $$PatientsTableCreateCompanionBuilder,
+          $$PatientsTableUpdateCompanionBuilder,
+          (Patient, BaseReferences<_$AppDatabase, $PatientsTable, Patient>),
+          Patient,
+          PrefetchHooks Function()
+        > {
+  $$PatientsTableTableManager(_$AppDatabase db, $PatientsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PatientsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PatientsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PatientsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<bool> isDeleted = const Value.absent(),
+                Value<String> syncState = const Value.absent(),
+                Value<int> processNumber = const Value.absent(),
+                Value<String> fullName = const Value.absent(),
+                Value<DateTime?> dateOfBirth = const Value.absent(),
+                Value<String?> sex = const Value.absent(),
+                Value<String?> idDocument = const Value.absent(),
+                Value<String?> taxId = const Value.absent(),
+                Value<String?> phone = const Value.absent(),
+                Value<String?> phoneAlt = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String?> address = const Value.absent(),
+                Value<String?> city = const Value.absent(),
+                Value<String?> province = const Value.absent(),
+                Value<String?> nextOfKinName = const Value.absent(),
+                Value<String?> nextOfKinPhone = const Value.absent(),
+                Value<String?> bloodType = const Value.absent(),
+                Value<String?> allergies = const Value.absent(),
+                Value<String?> chronicConditions = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PatientsCompanion(
+                id: id,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                isDeleted: isDeleted,
+                syncState: syncState,
+                processNumber: processNumber,
+                fullName: fullName,
+                dateOfBirth: dateOfBirth,
+                sex: sex,
+                idDocument: idDocument,
+                taxId: taxId,
+                phone: phone,
+                phoneAlt: phoneAlt,
+                email: email,
+                address: address,
+                city: city,
+                province: province,
+                nextOfKinName: nextOfKinName,
+                nextOfKinPhone: nextOfKinPhone,
+                bloodType: bloodType,
+                allergies: allergies,
+                chronicConditions: chronicConditions,
+                notes: notes,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<bool> isDeleted = const Value.absent(),
+                Value<String> syncState = const Value.absent(),
+                required int processNumber,
+                required String fullName,
+                Value<DateTime?> dateOfBirth = const Value.absent(),
+                Value<String?> sex = const Value.absent(),
+                Value<String?> idDocument = const Value.absent(),
+                Value<String?> taxId = const Value.absent(),
+                Value<String?> phone = const Value.absent(),
+                Value<String?> phoneAlt = const Value.absent(),
+                Value<String?> email = const Value.absent(),
+                Value<String?> address = const Value.absent(),
+                Value<String?> city = const Value.absent(),
+                Value<String?> province = const Value.absent(),
+                Value<String?> nextOfKinName = const Value.absent(),
+                Value<String?> nextOfKinPhone = const Value.absent(),
+                Value<String?> bloodType = const Value.absent(),
+                Value<String?> allergies = const Value.absent(),
+                Value<String?> chronicConditions = const Value.absent(),
+                Value<String?> notes = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PatientsCompanion.insert(
+                id: id,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                isDeleted: isDeleted,
+                syncState: syncState,
+                processNumber: processNumber,
+                fullName: fullName,
+                dateOfBirth: dateOfBirth,
+                sex: sex,
+                idDocument: idDocument,
+                taxId: taxId,
+                phone: phone,
+                phoneAlt: phoneAlt,
+                email: email,
+                address: address,
+                city: city,
+                province: province,
+                nextOfKinName: nextOfKinName,
+                nextOfKinPhone: nextOfKinPhone,
+                bloodType: bloodType,
+                allergies: allergies,
+                chronicConditions: chronicConditions,
+                notes: notes,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PatientsTable, Patient>(table),
+                  BaseReferences<_$AppDatabase, $PatientsTable, Patient>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PatientsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PatientsTable,
+      Patient,
+      $$PatientsTableFilterComposer,
+      $$PatientsTableOrderingComposer,
+      $$PatientsTableAnnotationComposer,
+      $$PatientsTableCreateCompanionBuilder,
+      $$PatientsTableUpdateCompanionBuilder,
+      (Patient, BaseReferences<_$AppDatabase, $PatientsTable, Patient>),
+      Patient,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -2108,4 +3960,6 @@ class $AppDatabaseManager {
       $$UsersTableTableManager(_db, _db.users);
   $$AuditLogsTableTableManager get auditLogs =>
       $$AuditLogsTableTableManager(_db, _db.auditLogs);
+  $$PatientsTableTableManager get patients =>
+      $$PatientsTableTableManager(_db, _db.patients);
 }

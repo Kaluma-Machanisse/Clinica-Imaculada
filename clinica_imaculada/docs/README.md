@@ -21,4 +21,7 @@ Funciona **100% offline**; quando há internet, sincroniza uma cópia dos dados 
 
 ## Estado atual
 
-Passo 1 — Fundação (em curso): estrutura de pastas, dependências, base de dados cifrada, navegação, tema, autenticação local por perfil, camada de sincronização vazia.
+- **Passo 1 — Fundação** ✔: estrutura, base de dados cifrada, autenticação local
+  por perfil, navegação, tema, camada de sincronização vazia.
+- **Passo 2 — Pacientes** ✔: cadastro, pesquisa, ficha, edição, remoção lógica.
+- **Próximo**: Consultas + Anamnese.

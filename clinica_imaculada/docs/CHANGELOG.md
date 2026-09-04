@@ -2,6 +2,25 @@
 
 Formato: data — resumo das alterações de código e documentação.
 
+## 2026-09-04 — Passo 2: Módulo de Pacientes
+
+**Código**
+- Tabela `patients` (drift) com `SyncColumns`; migração v1 → v2.
+- `PatientsDao`: pesquisa reativa (nome/telefone/nº de processo), geração
+  sequencial do nº de processo em transação, apagamento lógico.
+- `PatientRepository`: controlo de acesso na camada de dados + registo em
+  auditoria (create/update/delete/view).
+- Ecrãs: lista com pesquisa, formulário de criação/edição (identificação,
+  contactos, dados clínicos, notas), ficha de detalhe.
+- Rotas `/pacientes`, `/pacientes/novo`, `/pacientes/:id`,
+  `/pacientes/:id/editar`.
+- `core/common/errors.dart`: `AccessDeniedException`, `ValidationException`.
+- Testes do DAO: nº de processo sequencial, pesquisa, soft delete, `sync_state`.
+
+**Documentação**
+- `docs/modulos/pacientes.md`; `docs/base-de-dados.md` (tabela `patients`,
+  schemaVersion 2); índices de módulos e este CHANGELOG atualizados.
+
 ## 2026-09-04 — Passo 1: Fundação
 
 **Código**

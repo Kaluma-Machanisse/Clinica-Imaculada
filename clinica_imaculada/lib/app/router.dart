@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../core/auth/permissions.dart';
 import '../core/auth/session.dart';
 import '../features/auth/presentation/login_screen.dart';
 import '../features/auth/presentation/setup_screen.dart';
+import '../features/patients/presentation/patient_detail_page.dart';
+import '../features/patients/presentation/patient_form_page.dart';
+import '../features/patients/presentation/patients_list_page.dart';
 import '../features/shell/main_shell.dart';
 import '../features/shell/placeholder_page.dart';
 import 'providers.dart';
@@ -57,11 +61,35 @@ final routerProvider = Provider<GoRouter>((ref) {
           child: child,
         ),
         routes: [
+          // Pacientes — módulo implementado.
+          GoRoute(
+            path: '/pacientes',
+            builder: (_, _) => const PatientsListPage(),
+            routes: [
+              GoRoute(
+                path: 'novo',
+                builder: (_, _) => const PatientFormPage(),
+              ),
+              GoRoute(
+                path: ':id/editar',
+                builder: (_, state) =>
+                    PatientFormPage(patientId: state.pathParameters['id']),
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (_, state) =>
+                    PatientDetailPage(id: state.pathParameters['id']!),
+              ),
+            ],
+          ),
+          // Restantes secções — ainda por construir.
           for (final r in kSectionRoutes)
-            GoRoute(
-              path: r.path,
-              builder: (_, _) => PlaceholderPage(title: r.label, icon: r.icon),
-            ),
+            if (r.section != AppSection.pacientes)
+              GoRoute(
+                path: r.path,
+                builder: (_, _) =>
+                    PlaceholderPage(title: r.label, icon: r.icon),
+              ),
         ],
       ),
     ],

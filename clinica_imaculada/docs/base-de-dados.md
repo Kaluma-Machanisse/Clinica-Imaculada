@@ -50,15 +50,38 @@ Registo imutável de ações. Não usa `SyncColumns` (linhas nunca mudam).
 | `details` | TEXT? | descrição livre |
 | `is_synced` | BOOL | copiado para a nuvem |
 
+### `patients`
+Ficha de paciente (módulo [Pacientes](modulos/pacientes.md)). Usa `SyncColumns`.
+
+| Campo | Tipo | Notas |
+|---|---|---|
+| `process_number` | INT | sequencial, **único**, gerado automaticamente |
+| `full_name` | TEXT | obrigatório |
+| `date_of_birth` | DATETIME? | |
+| `sex` | TEXT? | `feminino` \| `masculino` \| `outro` |
+| `id_document` | TEXT? | BI / passaporte |
+| `tax_id` | TEXT? | NIF (para recibos) |
+| `phone` / `phone_alt` | TEXT? | |
+| `email` | TEXT? | |
+| `address` / `city` / `province` | TEXT? | |
+| `next_of_kin_name` / `next_of_kin_phone` | TEXT? | contacto de emergência |
+| `blood_type` | TEXT? | |
+| `allergies` | TEXT? | |
+| `chronic_conditions` | TEXT? | |
+| `notes` | TEXT? | |
+
 ## Tabelas planeadas (próximos passos)
 
-`patients`, `appointments`, `anamnesis`, `exam_requests`, `exam_results`,
-`services`, `products`, `stock_movements`, `dispenses`, `payments`,
-`cash_movements`, `receipts`. Cada uma será documentada no respetivo módulo em
+`appointments`, `anamnesis`, `exam_requests`, `exam_results`, `services`,
+`products`, `stock_movements`, `dispenses`, `payments`, `cash_movements`,
+`receipts`. Cada uma será documentada no respetivo módulo em
 [modulos/](modulos/) quando for criada.
 
 ## Migrações
 
-`schemaVersion = 1`. Alterações de esquema incrementam a versão e adicionam um
-passo em `MigrationStrategy` (`lib/core/database/app_database.dart`). O código
-gerado (`*.g.dart`) é produzido por `dart run build_runner build`.
+`schemaVersion = 2`.
+- v1 → v2: adiciona a tabela `patients`.
+
+Alterações de esquema incrementam a versão e adicionam um passo em
+`MigrationStrategy` (`lib/core/database/app_database.dart`). O código gerado
+(`*.g.dart`) é produzido por `dart run build_runner build`.
