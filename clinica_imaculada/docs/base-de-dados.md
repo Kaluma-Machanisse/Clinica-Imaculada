@@ -70,17 +70,45 @@ Ficha de paciente (módulo [Pacientes](modulos/pacientes.md)). Usa `SyncColumns`
 | `chronic_conditions` | TEXT? | |
 | `notes` | TEXT? | |
 
+### `appointments`
+Consultas marcadas (módulo [Consultas](modulos/consultas.md)). Usa `SyncColumns`.
+
+| Campo | Tipo | Notas |
+|---|---|---|
+| `patient_id` | TEXT | referência a `patients.id` |
+| `doctor_id` | TEXT | referência a `users.id` (perfil `medico`) |
+| `scheduled_at` | DATETIME | data/hora da consulta |
+| `duration_minutes` | INT | default 30 |
+| `status` | TEXT | `agendada` \| `confirmada` \| `emAtendimento` \| `concluida` \| `cancelada` \| `faltou` |
+| `reason` | TEXT? | motivo da consulta |
+| `notes` | TEXT? | |
+
+### `anamnesis_entries`
+Registo clínico (módulo [Anamnese](modulos/anamnese.md)). Usa `SyncColumns`.
+
+| Campo | Tipo | Notas |
+|---|---|---|
+| `patient_id` | TEXT | referência a `patients.id` |
+| `appointment_id` | TEXT? | referência a `appointments.id`, opcional |
+| `doctor_id` | TEXT | referência a `users.id`, autor do registo |
+| `complaint` | TEXT? | queixa principal |
+| `history` | TEXT? | história da doença atual |
+| `physical_exam` | TEXT? | exame físico |
+| `vital_signs` | TEXT? | TA, FC, FR, temperatura, SpO2, peso, altura (texto livre) |
+| `diagnosis` | TEXT? | |
+| `plan` | TEXT? | conduta / plano terapêutico |
+
 ## Tabelas planeadas (próximos passos)
 
-`appointments`, `anamnesis`, `exam_requests`, `exam_results`, `services`,
-`products`, `stock_movements`, `dispenses`, `payments`, `cash_movements`,
-`receipts`. Cada uma será documentada no respetivo módulo em
-[modulos/](modulos/) quando for criada.
+`exam_requests`, `exam_results`, `services`, `products`, `stock_movements`,
+`dispenses`, `payments`, `cash_movements`, `receipts`. Cada uma será
+documentada no respetivo módulo em [modulos/](modulos/) quando for criada.
 
 ## Migrações
 
-`schemaVersion = 2`.
+`schemaVersion = 3`.
 - v1 → v2: adiciona a tabela `patients`.
+- v2 → v3: adiciona as tabelas `appointments` e `anamnesis_entries`.
 
 Alterações de esquema incrementam a versão e adicionam um passo em
 `MigrationStrategy` (`lib/core/database/app_database.dart`). O código gerado

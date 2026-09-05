@@ -16,8 +16,8 @@ tabelas, ecrãs, regras de negócio e ligações a outros módulos.
 | Módulo | Documento | Estado |
 |---|---|---|
 | Pacientes | [pacientes.md](pacientes.md) | **implementado** (CRUD + pesquisa + ficha) |
-| Consultas | _(por criar)_ | por iniciar |
-| Anamnese | _(por criar)_ | por iniciar |
+| Consultas | [consultas.md](consultas.md) | **implementado** (agenda, estados, ligação a pacientes) |
+| Anamnese | [anamnese.md](anamnese.md) | **implementado** (registo clínico por paciente/consulta) |
 | Exames | _(por criar)_ | por iniciar — aguarda modelos dos exames |
 | Farmácia | _(por criar)_ | por iniciar |
 | Gestão | _(por criar)_ | por iniciar |

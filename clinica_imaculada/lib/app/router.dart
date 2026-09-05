@@ -5,6 +5,10 @@ import 'package:go_router/go_router.dart';
 
 import '../core/auth/permissions.dart';
 import '../core/auth/session.dart';
+import '../features/anamnesis/presentation/anamnesis_form_page.dart';
+import '../features/anamnesis/presentation/anamnesis_home_page.dart';
+import '../features/appointments/presentation/appointment_form_page.dart';
+import '../features/appointments/presentation/appointments_list_page.dart';
 import '../features/auth/presentation/login_screen.dart';
 import '../features/auth/presentation/setup_screen.dart';
 import '../features/patients/presentation/patient_detail_page.dart';
@@ -82,9 +86,45 @@ final routerProvider = Provider<GoRouter>((ref) {
               ),
             ],
           ),
+          // Consultas — módulo implementado.
+          GoRoute(
+            path: '/consultas',
+            builder: (_, _) => const AppointmentsListPage(),
+            routes: [
+              GoRoute(
+                path: 'novo',
+                builder: (_, _) => const AppointmentFormPage(),
+              ),
+              GoRoute(
+                path: ':id/editar',
+                builder: (_, state) => AppointmentFormPage(
+                  appointmentId: state.pathParameters['id'],
+                ),
+              ),
+            ],
+          ),
+          // Anamnese — módulo implementado.
+          GoRoute(
+            path: '/anamnese',
+            builder: (_, _) => const AnamnesisHomePage(),
+            routes: [
+              GoRoute(
+                path: 'novo',
+                builder: (_, _) => const AnamnesisFormPage(),
+              ),
+              GoRoute(
+                path: ':id/editar',
+                builder: (_, state) => AnamnesisFormPage(
+                  entryId: state.pathParameters['id'],
+                ),
+              ),
+            ],
+          ),
           // Restantes secções — ainda por construir.
           for (final r in kSectionRoutes)
-            if (r.section != AppSection.pacientes)
+            if (r.section != AppSection.pacientes &&
+                r.section != AppSection.consultas &&
+                r.section != AppSection.anamnese)
               GoRoute(
                 path: r.path,
                 builder: (_, _) =>

@@ -42,6 +42,18 @@ class UsersDao extends DatabaseAccessor<AppDatabase> with _$UsersDaoMixin {
         .get();
   }
 
+  /// Utilizadores ativos com um determinado perfil (ex.: médicos, para o
+  /// seletor de consultas).
+  Future<List<User>> listActiveByRole(String role) {
+    return (select(users)
+          ..where((u) =>
+              u.isActive.equals(true) &
+              u.isDeleted.equals(false) &
+              u.role.equals(role))
+          ..orderBy([(u) => OrderingTerm(expression: u.fullName)]))
+        .get();
+  }
+
   Future<void> insertUser(UsersCompanion user) => into(users).insert(user);
 
   /// Início de sessão bem-sucedido: limpa tentativas falhadas e atualiza a

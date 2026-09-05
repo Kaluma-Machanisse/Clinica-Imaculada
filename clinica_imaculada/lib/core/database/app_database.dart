@@ -3,6 +3,10 @@ import 'package:drift_flutter/drift_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../features/anamnesis/data/anamnesis_dao.dart';
+import '../../features/anamnesis/data/anamnesis_table.dart';
+import '../../features/appointments/data/appointments_dao.dart';
+import '../../features/appointments/data/appointments_table.dart';
 import '../../features/patients/data/patients_dao.dart';
 import '../../features/patients/data/patients_table.dart';
 import 'daos/audit_dao.dart';
@@ -18,8 +22,8 @@ part 'app_database.g.dart';
 /// Toda a leitura e escrita da aplicação passa por aqui. A cópia para a nuvem
 /// é feita à parte pelo serviço de sincronização, sem bloquear estas operações.
 @DriftDatabase(
-  tables: [Users, AuditLogs, Patients],
-  daos: [UsersDao, AuditDao, PatientsDao],
+  tables: [Users, AuditLogs, Patients, Appointments, AnamnesisEntries],
+  daos: [UsersDao, AuditDao, PatientsDao, AppointmentsDao, AnamnesisDao],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase(String encryptionKeyHex)
@@ -29,7 +33,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase.forTesting(super.executor);
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -39,6 +43,10 @@ class AppDatabase extends _$AppDatabase {
         onUpgrade: (m, from, to) async {
           if (from < 2) {
             await m.createTable(patients);
+          }
+          if (from < 3) {
+            await m.createTable(appointments);
+            await m.createTable(anamnesisEntries);
           }
         },
         beforeOpen: (details) async {

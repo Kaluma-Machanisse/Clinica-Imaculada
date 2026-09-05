@@ -2,6 +2,32 @@
 
 Formato: data — resumo das alterações de código e documentação.
 
+## 2026-09-04 — Passo 3: Consultas + Anamnese
+
+**Código**
+- Tabelas `appointments` e `anamnesis_entries` (drift, `SyncColumns`,
+  chaves estrangeiras para `patients`/`users`); migração v2 → v3.
+- `AppointmentsDao`: agenda por dia (junção com pacientes/médicos, nomes já
+  resolvidos), histórico por paciente, mudança de estado, apagamento lógico.
+- `AnamnesisDao`: histórico por paciente (mais recente primeiro), criação e
+  atualização.
+- `AppointmentRepository` / `AnamnesisRepository`: controlo de acesso na
+  camada de dados + auditoria.
+- `UsersDao.listActiveByRole` (para o seletor de médicos).
+- Diálogo de seleção de paciente partilhado (`showPatientPickerDialog`),
+  reutilizado por Consultas e Anamnese.
+- Ecrãs: agenda do dia com navegação e ações rápidas de estado, formulário de
+  marcação/edição de consulta; escolha de paciente + histórico e formulário de
+  anamnese (com associação opcional a uma consulta).
+- Rotas `/consultas[/novo|/:id/editar]`, `/anamnese[/novo|/:id/editar]`.
+- Testes de DAO: agenda por dia, mudança de estado, apagamento lógico
+  (consultas); histórico ordenado, atualização (anamnese).
+
+**Documentação**
+- `docs/modulos/consultas.md`, `docs/modulos/anamnese.md`;
+  `docs/base-de-dados.md` (tabelas novas, schemaVersion 3); índices
+  atualizados.
+
 ## 2026-09-04 — Passo 2: Módulo de Pacientes
 
 **Código**

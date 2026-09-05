@@ -30,4 +30,6 @@ flutter run -d windows               # executar (alvo principal)
 - Passo 1 (Fundação) ✔ — estrutura, base de dados cifrada, autenticação local
   por perfil, navegação, camada de sincronização vazia.
 - Passo 2 (Pacientes) ✔ — cadastro, pesquisa, ficha, edição, remoção lógica.
-- Próximo: Consultas + Anamnese.
+- Passo 3 (Consultas + Anamnese) ✔ — agenda por dia, estados de consulta,
+  registo clínico por paciente.
+- Próximo: Exames (aguarda modelos) ou Farmácia.
